@@ -9,8 +9,7 @@ Proyek ini terdiri dari dua bagian utama:
 ### Teknologi yang digunakan
 - .NET 8
 - Entity Framework Core
-- SQL Server
-- Swagger
+- MYSQL
 
 ### Cara Menjalankan
 #### 1. Clone repository
@@ -31,9 +30,6 @@ dotnet ef database update
 dotnet run
 ```
 API akan berjalan di `http://localhost:5012/`.
-
-#### 4. Mengakses Swagger
-Buka browser dan akses `http://localhost:5012/swagger` untuk dokumentasi API.
 
 ---
 
