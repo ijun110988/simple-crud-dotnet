@@ -1,0 +1,6 @@
+@MyRestApiDotnet_HostAddress = http://localhost:5012
+
+GET {{MyRestApiDotnet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

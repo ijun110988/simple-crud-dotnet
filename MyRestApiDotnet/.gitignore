@@ -1,0 +1,53 @@
+# Visual Studio & Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+*.sw?
+
+# Build Output
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.log
+*.cache
+
+# Paket & Dependencies
+node_modules/
+packages/
+*.nupkg
+*.snupkg
+
+# Config & Secrets
+appsettings.json
+appsettings.Development.json
+secrets.json
+*.env
+
+# Logs & Temporary Files
+logs/
+*.log
+*.bak
+*.tmp
+*.lock
+.DS_Store
+
+# Database
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+# Docker
+docker-compose.override.yml
+*.dockerignore
+
+# .NET User-Specific Files
+*.pubxml
+*.pubxml.user
+*.rsp
+*.ps1
