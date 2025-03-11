@@ -1,58 +1,110 @@
-# MyCrudApp
+# MyRestApiDotnet & MyCrudApp
 
-MyCrudApp adalah aplikasi berbasis ASP.NET Core MVC yang berfungsi sebagai CRUD sederhana untuk mengelola produk. Aplikasi ini menggunakan API sebagai backend untuk mengambil dan menyimpan data produk.
+Proyek ini terdiri dari dua bagian utama:
 
-## 📂 Struktur Folder
+1. **MyRestApiDotnet** - API berbasis .NET untuk mengelola produk.
+2. **MyCrudApp** - Aplikasi berbasis ASP.NET MVC yang berfungsi sebagai front-end untuk mengakses dan mengelola produk melalui API.
+
+## 1. MyRestApiDotnet
+### Teknologi yang digunakan
+- .NET 8
+- Entity Framework Core
+- SQL Server
+- Swagger
+
+### Cara Menjalankan
+#### 1. Clone repository
+```bash
+git clone https://github.com/username/repository.git
+cd MyRestApiDotnet
 ```
-MyCrudApp/
-│-- Controllers/           # Berisi controller untuk menangani request
-│   │-- ProductController.cs
-│-- Models/               # Berisi model untuk merepresentasikan data
-│   │-- Product.cs
-│-- Views/                # Berisi tampilan HTML (Razor Views)
-│   │-- Product/
-│       │-- Index.cshtml  # Menampilkan daftar produk
-│       │-- Create.cshtml # Form untuk menambah produk
-│-- wwwroot/              # Berisi file statis seperti CSS dan JS
-│-- appsettings.json      # Konfigurasi aplikasi
-│-- Program.cs            # Entry point aplikasi
-│-- Startup.cs            # Konfigurasi aplikasi dan dependency injection
-│-- MyCrudApp.csproj      # File konfigurasi proyek .NET
+
+#### 2. Konfigurasi Database
+- Buka `appsettings.json`, sesuaikan connection string dengan database Anda.
+- Jalankan migrasi database:
+```bash
+dotnet ef database update
 ```
 
-## 🚀 Cara Menjalankan Aplikasi
-### 1️⃣ **Clone Repository**
-```sh
-git clone <repository-url>
+#### 3. Jalankan API
+```bash
+dotnet run
+```
+API akan berjalan di `http://localhost:5012/`.
+
+#### 4. Mengakses Swagger
+Buka browser dan akses `http://localhost:5012/swagger` untuk dokumentasi API.
+
+---
+
+## 2. MyCrudApp
+### Teknologi yang digunakan
+- ASP.NET MVC
+- Razor View Engine
+- HttpClient untuk konsumsi API
+
+### Cara Menjalankan
+#### 1. Clone repository
+```bash
 cd MyCrudApp
 ```
 
-### 2️⃣ **Jalankan API Backend**
-Pastikan API sudah berjalan di `http://localhost:5012/api/products`. Jika belum, jalankan API terlebih dahulu.
-
-### 3️⃣ **Jalankan Aplikasi**
-```sh
-dotnet run
-```
-Atau dengan mode development:
-```sh
-dotnet watch run
-```
-
-### 4️⃣ **Akses Aplikasi di Browser**
-Buka `http://localhost:5221/Product/Index` untuk melihat daftar produk.
-
-## 🔧 Konfigurasi API Endpoint
-Jika API berjalan di URL yang berbeda, ubah variabel `apiUrl` di `ProductController.cs`:
+#### 2. Konfigurasi API Endpoint
+- Buka `ProductController.cs`, pastikan variabel `apiUrl` mengarah ke API yang benar, misalnya:
 ```csharp
 private readonly string apiUrl = "http://localhost:5012/api/products";
 ```
 
-## 🛠 Fitur yang Tersedia
-✅ **Menampilkan daftar produk**
-✅ **Menambahkan produk baru**
-✅ **Terhubung dengan API backend**
+#### 3. Jalankan Aplikasi
+```bash
+dotnet run
+```
+Aplikasi akan berjalan di `http://localhost:5221/`.
 
-## 📜 Lisensi
-Proyek ini menggunakan lisensi MIT.
+### Struktur Folder
+```
+MyRestApiDotnet/
+│-- Controllers/
+│   ├── ProductsController.cs
+│-- Models/
+│   ├── Product.cs
+│-- Data/
+│   ├── ApplicationDbContext.cs
+│-- appsettings.json
+│-- Program.cs
+│
+MyCrudApp/
+│-- Controllers/
+│   ├── ProductController.cs
+│-- Views/
+│   ├── Product/
+│   │   ├── Index.cshtml
+│   │   ├── Create.cshtml
+│-- Models/
+│   ├── Product.cs
+│-- Program.cs
+│-- appsettings.json
+```
+
+## 3. Auto Restart Saat Ada Perubahan
+Gunakan perintah berikut untuk otomatis merestart aplikasi saat ada perubahan:
+```bash
+dotnet watch run
+```
+
+## 4. Push ke GitHub
+Tambahkan `.gitignore` agar file yang tidak perlu tidak ikut di-push:
+```bash
+# .gitignore untuk proyek .NET
+bin/
+obj/
+*.db
+appsettings.json
+```
+Lalu jalankan:
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
 
